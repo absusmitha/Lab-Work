@@ -11,6 +11,8 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 
@@ -25,7 +27,9 @@ public class Employee {
     @Column(name = "id")
     private Long id;
 
-    @NotNull (message = "Name should not be null.")
+    //@NotNull (message = "Name should not be null.") this only checks for the null values
+   // @NotEmpty(message = "Name should not be null.") // this checks for both null and empty values
+    @NotBlank(message = "Name should not be null.")
     @Column(name = "name")
     private String name;
 
@@ -39,7 +43,9 @@ public class Employee {
     @Column(name = "location")
     private String location;
 
-    @NotNull
+    //@NotNull
+    //@NotEmpty(message = "Department should not be null.")
+    @NotBlank(message = "Department should not be null.")
     @Column(name = "department")
     private String department;
 
